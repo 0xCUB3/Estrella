@@ -22,13 +22,15 @@ async def hello(ctx):
 
 @client.event
 async def on_member_join(member):
-    channel = client.get_channel(welcome_channel_id)
-    await channel.send("Hello!")
+    # channel = client.get_channel(welcome_channel_id)
+    # await channel.send("Hello!")
+    role = discord.utils.get(member.server.roles, id="930208090643628033")
+    await client.add_roles(member, role)
 
-@client.event
-async def on_member_remove(member):
-    channel = client.get_channel(goodbye_channel_id)
-    await channel.send("Goodbye!")
+#@client.event
+#async def on_member_remove(member):
+#    channel = client.get_channel(goodbye_channel_id)
+#    await channel.send("Goodbye!")
 
 @client.command(pass_context=True)
 async def join(ctx):
